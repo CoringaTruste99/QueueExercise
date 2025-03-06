@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Queues</title>
+</head>
+<body>
+    <form action="/add" method="post">
+        <input type="text" name="items" placeholder="nombre del elemento" autofocus>
+        <input type="submit" value="Add">
+    </form>
+
+    <br>
+
+    <form action="/remove" method="post">
+        <input type="text" name="items" placeholder="id del elemento">
+        <input type="submit" value="Remove">
+    </form>
+
+    <br>
+
+    <form action="/delete" method="post">
+        <input type="submit" value="Clear all">
+    </form>
+
+    <br>
+
+    <form action="/recorrer" method="post">
+        <input type="submit" value="Next" name="items">
+    </form>
+    <p>Siguientes 10 elementos:</p>
+    <ul>
+        {% if first10 %}
+            {% for item in first10 %}
+                <li>Posición {{ loop.index0 }}: {{ item }}</li>
+            {% endfor %}
+        {% else %}
+            <li>No hay elementos en la cola.</li>
+        {% endif %}
+    </ul>
+    {% if custom_counter > 0 %}
+    <p>En cola: {{ custom_counter }}</p>
+    {% endif %}
+    {% if mensaje %}
+        <p>{{ mensaje }}</p>
+    {% endif %}
+</body>
+</html>
